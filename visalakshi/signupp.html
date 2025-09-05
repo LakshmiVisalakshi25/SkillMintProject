@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Signup</title>
+    <link rel="stylesheet" href="signup(external).css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/brands.min.css" integrity="sha512-mXqwRsOznG7CS37KA7CLR1Fc72gfOgp7r8xaVdBKoBKhitcKI/mK+IamtZUf+FAkufXOvVTESu9lPsoQc+kFxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+    <div class="main">
+        <div class="main2">
+            <div class="heading">
+                <h2>Student Signup Form</h2>
+                <h1>SkillMint</h1>
+                <h2>Join Our Learning Community</h2>
+                <p>Create your account to start your educational journey</p>
+            </div>
+
+            <!-- Role Selection Tabs -->
+            <div class="role-tabs">
+                <div class="tab-indicator" id="tabIndicator"></div>
+                <button class="tab-button active" data-role="student">
+                    <a href="signupp.html">🎓 I'm a Student</a>
+                </button>
+                <button class="tab-button active" data-role="instructor">
+                    <a href="instructorsignup.html">👨‍🏫 I'm an Instructor</a>
+                </button>
+                <button class="tab-button active" data-role="recruiter">
+                    <a href="recruitersignupform.html">💼 I'm a Recruiter</a>
+                </button>
+                <button class="tab-button active" data-role="alumni">
+                    <a href="Alumni.html">👨‍🎓 I'm an Alumni</a>
+                </button>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-container">
+                <form id="studentSignupForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required />
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education">Education Level</label>
+                        <select id="education" name="education">
+                            <option value="">Select your level</option>
+                            <option value="highschool">High School</option>
+                            <option value="undergrad">Undergraduate</option>
+                            <option value="postgrad">Postgraduate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Areas of Interest</label>
+                        <select id="interests" name="interests">
+                            <option value="Technology">Technology</option>
+                            <option value="Business">Business</option>
+                            <option value="Arts and Design">Arts & Design</option>
+                            <option value="Science">Science</option>
+                            <option value="Languages">Languages</option>
+                        </select>
+                    </div>
+
+                    <!-- Learning Goals -->
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="learningGoals">Learning Goals (Optional)</label>
+                        <textarea id="learningGoals" name="learningGoals" placeholder="Tell us about your learning objectives..."></textarea>
+                    </div>
+                     <!-- RESUME -->
+                    <div class="form-group">
+                        <div class="form-field">
+                            <label>Upload CV / Profile Picture</label>
+                            <input type="file" name="upload">
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-group button-column" style="grid-column: 1 / -1;">
+                        <button type="button" class="btn-back" onclick="window.location.href='Main.html'">Back to Home</button>
+                        <button type="submit" class="btn-primary">Create Student Account</button>
+                    </div>
+
+                    <!-- Divider -->
+                    <hr class="divider" />
+
+                    <!-- Social Login -->
+                    <div class="social-login" style="grid-column: 1 / -1;">
+                        <p>or continue with</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn"><span class="google"><i class="fa-brands fa-google"></i></span> Google</button>
+                            <button type="button" class="social-btn"><span class="facebook"><i class="fa-brands fa-facebook"></i></span> Facebook</button>
+                            <button type="button" class="social-btn"><span class="linkedin"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redirect Logic Script -->
+    <script>
+        document.getElementById("studentSignupForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Simulate user object (in real app, collect actual data or from backend)
+            const user = {
+                role: "student" // This is static here; can be dynamic in a multi-role form
+            };
+
+            // Redirect based on role
+            switch (user.role) {
+                case "student":
+                    window.location.href = "../Sindhu/stu3final.html";
+                    break;
+                case "instructor":
+                    window.location.href = "instructor-dashboard.html";
+                    break;
+                case "recruiter":
+                    window.location.href = "recruiter-dashboard.html";
+                    break;
+                case "alumni":
+                    window.location.href = "alumni-dashboard.html";
+                    break;
+                default:
+                    alert("Unknown role!");
+            }
+        });
+    </script>
+</body>
+</html>

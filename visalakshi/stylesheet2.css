@@ -1,0 +1,352 @@
+body {
+  margin: 0;
+  font-family: 'Poppins' !important;
+  background-color: #f5f5f5;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+.footer{
+    height: 80px;
+    background-color: rgb(184, 183, 183);
+    padding-top: 0px;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 20px; 
+  left: -50px;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 6px;
+  flex-direction: column;
+}
+
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 16px;
+  color: #1E3A6C;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #d3d3eb;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+
+
+.left img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.left h1 {
+  color: #1e3a6c;
+  margin: 0;
+  font-size: 24px;
+}
+
+
+.sections {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.sections a {
+  text-decoration: none;
+  color: #1e3a6c;
+  font-size: 18px;
+}
+.sections a:hover{
+  color: #4CAF50;
+}
+.sections i {
+  color: #1e3a6c;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #1e3a6c;
+  cursor: pointer;
+}
+.foot{
+  margin-top: 30px;
+  width: 100%;
+  height: 250px;
+  background-color: rgb(219, 219, 219);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+i{
+  color: #1e3a6c;
+}
+
+
+.sections span.close {
+  display: none;
+  font-size: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .submenu {
+                display: none;
+            }
+           .mobilenavbar a{
+            text-decoration: none;
+            color: navy;
+           }
+
+            .menu {
+                display: block;
+            }
+        }
+
+        .logoh {
+            color: #1e3a6c;
+            margin: 0;
+        }
+        .mobilenavbar {
+            width: 200px;
+            height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            padding: 10px;
+            position: absolute;
+            transition: left 1s linear;
+            left: -200px;
+            top: 0px;
+            background-color: white;
+        }
+
+        .mobilenavbar div {
+            width: 100%;
+            font-size: 23px;
+            border-bottom: 1px solid grey;
+            cursor: pointer;
+            color: #1E3A6C;
+        }
+
+        .menubar {
+            width: fit-content;
+        }
+
+        .mobilenavbar div:hover {
+            background-color: rgb(250, 241, 215);
+        }
+
+        .wrong:hover {
+            background-color: greenyellow;
+        }
+
+.sec-1 { 
+  display: flex;
+  justify-content: center; 
+}
+.sec-1-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.sec-1-2 {
+  font-size: 40px;
+  color: #4ECDC4;
+}
+.sec-1-3 {
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 25px;
+ color: white;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+input {
+  width: 500px;
+  height: 50px;
+  border: white;
+  border-radius: 50px;
+  background-color: white;
+  font-size: 20px;
+  padding:10px 20px;
+}
+input:focus {
+  box-shadow: 0px 0px 2px 2px whitesmoke;
+  transform: translateY(-5px);
+  transition-duration: 2s;
+}
+.fa-search {
+  position: relative;
+  top: 20px;
+  left: -60px;
+  font-size: 25px;
+  color: black;
+}
+
+.courses-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.course-card, .no-results {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #FFF8F0 0%, #F0F8FF 100%);
+}
+
+.course-card h2 {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-content {
+  width: 250px;
+  font-size: 17px;
+}
+.courses-grid{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ✅ Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .dropdown{
+  display: none;
+}
+  .sec-1-2 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .sec-1-3 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  input {
+    width: 80%;
+    font-size: 18px;
+  }
+
+  .fa-search {
+    top: 20px;
+    left: -40px;
+  }
+
+  .about-content {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .course-card, .no-results {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.footer{
+  margin-top: 200px;
+    height: 80px;
+    background-color: rgb(184, 183, 183);
+    padding-top:10px;
+}
+@media (max-width: 1024px) {
+        .sections {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    align-items: flex-start;
+  }
+
+  .sections span.close {
+    display: block;
+    align-self: flex-end;
+  }
+
+  .sections a {
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .sections i {
+    margin-top: 20px;
+  }
+  .hamburger {
+    display: block;
+  }
+    }

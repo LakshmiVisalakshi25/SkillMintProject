@@ -1,0 +1,294 @@
+<!-- C++ Quiz - Floating Bubble UI -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C++ Quiz</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to right, #1e3c72, #a8edea);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+    .question-container {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 25px;
+      background-color: #0b2447;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+    }
+    .bubble {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ddd;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center;
+      cursor: pointer;
+      position: absolute;
+      top: 100vh;
+      color: #333;
+      font-size: 1.1rem; font-weight: bold;
+      padding: 15px;
+      transition: transform 0.5s, background-color 0.5s, border 0.5s, box-shadow 0.3s;
+      animation: moveUp var(--animation-duration) linear infinite;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .bubble:hover {
+      background-color: #f3f3f3;
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes moveUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-130vh); opacity: 0; }
+    }
+    @keyframes burstCorrect {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.6; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    .bubble.correct {
+      animation: burstCorrect 0.8s forwards;
+      background-color: #00c853;
+      border-color: #00c853;
+      color: white;
+    }
+    .bubble.incorrect {
+      border: 4px solid #ff1744;
+      background-color: #ffebee;
+    }
+    #quiz {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .score-display {
+      text-align: center;
+      margin-top: 180px;
+      font-size: 2.2rem;
+      color: #fff;
+    }
+    .score-display button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #ff4081;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .score-display button:hover {
+      background: #f50057;
+    }
+    @media screen and (max-width: 600px) {
+      .question-container { font-size: 1.5rem; padding: 10px 15px; }
+      .bubble { width: 120px; height: 120px; font-size: 0.9rem; }
+      .score-display { font-size: 1.6rem; margin-top: 150px; }
+      .score-display button { padding: 10px 25px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container">
+    <h2 id="question">Question Text</h2>
+  </div>
+
+  <div class="quiz-container" id="quiz"></div>
+
+  <script>
+    const quizContainer = document.getElementById('quiz');
+    const questionEl = document.getElementById('question');
+
+    const quizData = [
+      {
+        question: "1. What is the correct file extension for C++ source files?",
+        options: {
+          a: ".cp",
+          b: ".cpp",
+          c: ".cxx",
+          d: ".cc"
+        },
+        correct: "b"
+      },
+      {
+        question: "2. Which of the following is not a basic data type in C++?",
+        options: {
+          a: "int",
+          b: "float",
+          c: "real",
+          d: "char"
+        },
+        correct: "c"
+      },
+      {
+        question: "3. What is the output of: cout << 4 + 5 << endl;?",
+        options: {
+          a: "4 + 5",
+          b: "45",
+          c: "9",
+          d: "Error"
+        },
+        correct: "c"
+      },
+      {
+        question: "4. Which symbol is used to declare a pointer?",
+        options: {
+          a: "&",
+          b: "*",
+          c: "#",
+          d: "%"
+        },
+        correct: "b"
+      },
+      {
+        question: "5. What is the use of 'new' in C++?",
+        options: {
+          a: "Function declaration",
+          b: "Exception handling",
+          c: "Dynamic memory allocation",
+          d: "Loop control"
+        },
+        correct: "c"
+      },
+      {
+        question: "6. Which function is used to read a line of text?",
+        options: {
+          a: "cin",
+          b: "getline",
+          c: "scanf",
+          d: "read"
+        },
+        correct: "b"
+      },
+      {
+        question: "7. What does OOP stand for?",
+        options: {
+          a: "Open Oriented Program",
+          b: "Object Oriented Programming",
+          c: "Optional Object Processing",
+          d: "Object Operation Process"
+        },
+        correct: "b"
+      },
+      {
+        question: "8. What is the default access specifier for class members?",
+        options: {
+          a: "public",
+          b: "private",
+          c: "protected",
+          d: "static"
+        },
+        correct: "b"
+      },
+      {
+        question: "9. Which of these is a loop structure in C++?",
+        options: {
+          a: "repeat",
+          b: "for",
+          c: "each",
+          d: "select"
+        },
+        correct: "b"
+      },
+      {
+        question: "10. Which header is used for input/output in C++?",
+        options: {
+          a: "<iostream>",
+          b: "<conio.h>",
+          c: "<stdio.h>",
+          d: "<stdlib.h>"
+        },
+        correct: "a"
+      }
+    ];
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    function loadQuiz() {
+      const currentQuizData = quizData[currentQuiz];
+      questionEl.innerText = currentQuizData.question;
+      createBubbles(currentQuizData.options);
+    }
+
+    function createBubbles(options) {
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => bubble.remove());
+
+      Object.keys(options).forEach(key => {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.id = key;
+        bubble.innerText = options[key];
+
+        const startLeft = Math.random() * (window.innerWidth - 160);
+        const duration = 10 + Math.random() * 5;
+        const delay = Math.random() * duration;
+
+        bubble.style.left = `${startLeft}px`;
+        bubble.style.setProperty('--animation-duration', `${duration}s`);
+        bubble.style.animationDelay = `${delay}s`;
+
+        bubble.addEventListener('click', () => {
+          handleAnswer(bubble, key);
+        });
+
+        quizContainer.appendChild(bubble);
+      });
+    }
+
+    function handleAnswer(clickedBubble, answerKey) {
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => {
+        bubble.style.animationPlayState = 'paused';
+      });
+
+      if (answerKey === quizData[currentQuiz].correct) {
+        score++;
+        clickedBubble.classList.add('correct');
+      } else {
+        clickedBubble.classList.add('incorrect');
+        const correctBubble = document.getElementById(quizData[currentQuiz].correct);
+        if (correctBubble) {
+          correctBubble.style.border = '5px solid #00c853';
+        }
+      }
+
+      setTimeout(() => {
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+          loadQuiz();
+        } else {
+          showScore();
+        }
+      }, 1000);
+    }
+
+    function showScore() {
+      quizContainer.innerHTML = `
+        <div class="score-display">
+          <h2>🎉 You scored ${score} out of ${quizData.length}!</h2>
+          <button onclick="location.reload()">Play Again</button>
+        </div>
+      `;
+    }
+
+    loadQuiz();
+  </script>
+</body>
+</html>

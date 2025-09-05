@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doubt Solving</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="interact.css">
+</head>
+<body>
+  <div class="navbar">
+        <div class="brand" style="display: flex; align-items: center; gap: 6px;">
+            <img src="./logo.png" width="80px" height="70px" alt="logo">
+            <h1 class="logoh">Skill Mint</h1>
+        </div>
+        <div class="submenu">
+            <div>
+                <a href="interact.html"  style="color: #1e3a6c;font-size: 20px;">Doubt Solving</a>
+            </div>
+            <div class="profile" onclick="toggleDropdown()">
+                 <img src="../../Harini/assets/profile.jpg" width="30px" height="30px" alt="user">
+            </div>
+            <div class="dropdown" id="dropdownMenu">
+                <a href="#">Profile</a>
+                <a href="../../visalakshi/Main.html">Logout</a>
+            </div>
+        </div>
+        <div class="menu" style="font-size:25px; color:#1E3A6C;" onclick="open1()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="mobilenavbar" style="z-index: 999;">
+            <span style="font-size: 50px; color:#1E3A6C" onclick="close1()" class="wrong">&times;</span>
+            <div><h4>Doubt Solving</h4></div>
+        </div>
+    </div>
+
+  <section class="sec-1">
+    <div class="card">
+      <div class="doubt">
+        <p class="heading">Doubt Session</p>
+        <div class="recent-doubt-box">
+          <div class="doubt-content">
+            I need help understanding the concept of recursion in programming. Can you explain how it works and when it stops calling itself?
+          </div>
+          <div class="doubt-meta">
+            <span class="doubt-author">S</span>
+            <span class="doubt-time">10:30 AM</span>
+          </div>
+        </div>
+
+        <div class="card1">
+          <div class="submit">
+            Submit Your Response
+          </div>
+          <div class="textarea">
+            <textarea class="text"></textarea>
+          </div>
+          <button class="submitbut">Submit </button>
+        </div>
+
+        <div class="card2">
+          <h2 class="section-title">Discussion Thread</h2>
+          <div class="chat-container">
+            <div class="message student">
+              <div class="message-avatar">S</div>
+              <div class="message-content">
+                I need help understanding the concept of recursion in programming. Can you explain how it works and when it stops calling itself?
+                <div class="message-time">10:30 AM</div>
+              </div>
+            </div>
+            <div class="message instructor">
+              <div class="message-avatar">I</div>
+              <div class="message-content">
+                Great question! Recursion is a technique where a function calls itself. It stops at the "base case" that tells it to end.
+                <div class="message-time">10:32 AM</div>
+              </div>
+            </div>
+            <div class="message student">
+              <div class="message-avatar">S</div>
+              <div class="message-content">
+                That makes sense! But how do I identify the base case in a real problem?
+                <div class="message-time">10:35 AM</div>
+              </div>
+            </div>
+            <div class="message instructor">
+              <div class="message-avatar">I</div>
+              <div class="message-content">
+                Good follow-up! In a factorial example: factorial(1) = 1 is the base case. It prevents infinite recursion.
+                <div class="message-time">10:37 AM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card3">
+          <div class="mainp">
+            <div class="recom">
+              <i class="fa-solid fa-video"></i> Recommended Learning Resources
+            </div>
+            <div class="inst">
+              <b>Instructor</b>: These videos will help you understand recursion step by step. Watch them in order for the best learning experience!
+            </div>
+          </div>
+          <div class="cards4">
+            <div class="mincard">
+              <div class="mac">
+                <a href="https://www.youtube.com/watch?v=ivl5-snqul8"><i class="fa-solid fa-play"></i></a>
+              </div>
+              <div class="min">
+                <b>Recursion Explained in 5 Minutes</b><br>
+                Perfect introduction to recursion with visual examples and easy-to-understand explanations.<br>
+              </div>
+            </div>
+            <div class="mincard">
+              <div class="mac1">
+                <a href="https://www.youtube.com/watch?v=ngCos392W4w"><i class="fa-solid fa-play"></i></a>
+              </div>
+              <div class="min1">
+                <b>Understanding Base Cases in Recursion</b><br>
+                Deep dive into how to identify and write base cases effectively to prevent infinite recursion.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <center>
+      <p>&copy;SkillMint All rights reserved</p>
+      <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa-brands fa-linkedin"></i>
+    </center>
+  </div>
+
+  <script>
+    function open1() {
+      document.getElementsByClassName("mobilenavbar")[0].style = "left:0px;";
+    }
+    function close1() {
+      document.getElementsByClassName("mobilenavbar")[0].style = "left:-550px;";
+    }
+  </script>
+</body>
+</html>

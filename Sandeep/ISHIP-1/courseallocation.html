@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./courseallocation.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand" style="display: flex; align-items: center; gap: 6px;">
+            <img src="./logo.png" width="80px" height="70px" alt="logo">
+            <h1 class="logoh">Skill Mint</h1>
+        </div>
+        <div class="submenu">
+            <div>
+                <a href="interact.html"  style="color: #1e3a6c;font-size: 20px;">Doubt Solving</a>
+            </div>
+            <div>
+                <a href="#"  style="color: #1e3a6c;font-size: 20px;">Dashboard</a>
+            </div>
+            <div class="profile" onclick="toggleDropdown()">
+                 <img src="../../Harini/assets/profile.jpg" width="30px" height="30px" alt="user">
+            </div>
+            <div class="dropdown" id="dropdownMenu">
+                <a href="#">Profile</a>
+                <a href="../../visalakshi/Main.html">Logout</a>
+            </div>
+        </div>
+        <div class="menu" style="font-size:25px; color:#1E3A6C;" onclick="open1()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="mobilenavbar" style="z-index: 999;">
+            <span style="font-size: 50px; color:#1E3A6C" onclick="close1()" class="wrong">&times;</span>
+            <div><h4>Doubt Solving</h4></div>
+            <div><h4>Dashboard</h4></div>
+            <div><h4><a href="../../visalakshi/Main.html">Logout</a></h4></div>
+        </div>
+    </div>
+
+    <section class="sec">
+    <div class="box">
+      <div class="part1">
+        <img src="./sandeep.png" alt="Instructor Image">
+      </div>
+      <div class="part2">
+        <p>Instructor: Sandeep Varma</p>
+        <h4>Role - Full Stack Developer</h4>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="part2">
+        <p>Skills:</p>
+        <div class="skills">
+          <span class="skill-button">HTML</span>
+          <span class="skill-button">CSS</span>
+          <span class="skill-button">JavaScript</span>
+          <span class="skill-button">React.js</span>
+          <span class="skill-button">Node.js</span>
+          <span class="skill-button">MongoDB</span>
+          <span class="skill-button">Express.js</span>
+          <span class="skill-button">Java</span>
+          <span class="skill-button">Python</span>
+          <span class="skill-button">Git</span>
+          <span class="skill-button">REST APIs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section class="sec-1">
+    <div class="sec-1-1">
+        <h1 class="sec-1-2">Progress Tracking of Students</h1>
+        <p class="sec-1-3">Monitor each student's learning journey with real-time progress, course completion, and performance insights.</p>
+    </div>
+</section>
+<section class="search">
+    <input type="search" placeholder="Search for courses..." required id="searchinput">
+</section>
+<div class="courses-container">
+    <div class="courses-grid" id="coursesGrid"></div>
+</div>
+<div class="footer">
+        <center>
+            <p>&copy;SkillMint All rights reserved</p>
+            <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-linkedin"></i>
+        </center>
+    </div>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.closest(".profile")) {
+                document.getElementById("dropdownMenu").style.display = "none";
+            }
+        }
+
+        function open1() {
+            document.getElementsByClassName("mobilenavbar")[0].style = "left:0px;"
+        }
+
+        function close1() {
+            document.getElementsByClassName("mobilenavbar")[0].style = "left:-200px;"
+        }
+        const courseData = {
+  python: {
+    name: "Python Programming",
+    about: "Learn Python programming from scratch with hands-on projects and real-world examples.",
+    students: [
+      { name: "Sandeep", photo: "https://randomuser.me/api/portraits/men/11.jpg", email: "sandeep@example.com", progress: 85, topicsCovered: 17 },
+      { name: "Tharun", photo: "https://randomuser.me/api/portraits/men/12.jpg", email: "tharun@example.com", progress: 60, topicsCovered: 12 },
+      { name: "Varshitha", photo: "https://randomuser.me/api/portraits/women/13.jpg", email: "varshitha@example.com", progress: 80, topicsCovered: 14 },
+      { name: "Asha", photo: "https://randomuser.me/api/portraits/women/14.jpg", email: "asha@example.com", progress: 90, topicsCovered: 18 },
+      { name: "Ravi", photo: "https://randomuser.me/api/portraits/men/15.jpg", email: "ravi@example.com", progress: 70, topicsCovered: 13 }
+    ]
+  },
+
+  java: {
+    name: "Java",
+    about: "Learn object-oriented programming and build robust applications using Java.",
+    students: [
+      { name: "Charlie", photo: "https://randomuser.me/api/portraits/men/16.jpg", email: "charlie@example.com", progress: 72, topicsCovered: 15 },
+      { name: "Meena", photo: "https://randomuser.me/api/portraits/women/17.jpg", email: "meena@example.com", progress: 88, topicsCovered: 19 },
+      { name: "Yash", photo: "https://randomuser.me/api/portraits/men/18.jpg", email: "yash@example.com", progress: 64, topicsCovered: 11 },
+      { name: "Ananya", photo: "https://randomuser.me/api/portraits/women/19.jpg", email: "ananya@example.com", progress: 77, topicsCovered: 14 },
+      { name: "Raj", photo: "https://randomuser.me/api/portraits/men/20.jpg", email: "raj@example.com", progress: 55, topicsCovered: 10 }
+    ]
+  },
+
+  webdevelopment: {
+    name: "Web Development",
+    about: "Learn HTML, CSS, JavaScript, and full-stack web development.",
+    students: [
+      { name: "Sneha", photo: "https://randomuser.me/api/portraits/women/21.jpg", email: "sneha@example.com", progress: 95, topicsCovered: 20 },
+      { name: "Vikram", photo: "https://randomuser.me/api/portraits/men/22.jpg", email: "vikram@example.com", progress: 80, topicsCovered: 16 },
+      { name: "Priya", photo: "https://randomuser.me/api/portraits/women/23.jpg", email: "priya@example.com", progress: 70, topicsCovered: 13 },
+      { name: "Rohan", photo: "https://randomuser.me/api/portraits/men/24.jpg", email: "rohan@example.com", progress: 85, topicsCovered: 18 },
+      { name: "Diya", photo: "https://randomuser.me/api/portraits/women/25.jpg", email: "diya@example.com", progress: 60, topicsCovered: 11 }
+    ]
+  },
+
+  datascience: {
+    name: "Data Science",
+    about: "Learn data analysis, visualization, machine learning and model deployment.",
+    students: [
+      { name: "Karthik", photo: "https://randomuser.me/api/portraits/men/26.jpg", email: "karthik@example.com", progress: 78, topicsCovered: 15 },
+      { name: "Divya", photo: "https://randomuser.me/api/portraits/women/27.jpg", email: "divya@example.com", progress: 92, topicsCovered: 19 },
+      { name: "Aman", photo: "https://randomuser.me/api/portraits/men/28.jpg", email: "aman@example.com", progress: 65, topicsCovered: 12 },
+      { name: "Neha", photo: "https://randomuser.me/api/portraits/women/29.jpg", email: "neha@example.com", progress: 81, topicsCovered: 16 },
+      { name: "Harsha", photo: "https://randomuser.me/api/portraits/men/30.jpg", email: "harsha@example.com", progress: 74, topicsCovered: 14 }
+    ]
+  }
+};
+
+
+function searchCourses() {
+    const searchTerm = document.getElementById('searchinput').value.toLowerCase().trim();
+    const coursesGrid = document.getElementById('coursesGrid');
+
+    if (!searchTerm) {
+        coursesGrid.innerHTML = '';
+        return;
+    }
+
+    coursesGrid.innerHTML = '';
+    let matchFound = false;
+
+    for (let key in courseData) {
+        const course = courseData[key];
+        if (key.includes(searchTerm) || course.name.toLowerCase().includes(searchTerm)) {
+            matchFound = true;
+            course.students.forEach(student => {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                card.innerHTML = `
+                    <img src="${student.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-top:10px;"><br>
+                    <h2 style="font-family: Arial, sans-serif";>${student.name}</h2><br>
+                    <p style="font-size:16px">Email: ${student.email}</p><br>
+                    <p>Topics Covered: ${student.topicsCovered}</p>
+                    <div style="width: 80%; background-color: #eee; border-radius: 20px; overflow: hidden; margin-top: 10px;">
+                        <div style="width: ${student.progress}%; background-color: #4caf50; height: 20px; color: white; text-align: right; padding-right: 5px; line-height: 20px;">${student.progress}%</div>
+                    </div>
+                    <button style="margin-top: 15px; padding: 10px 20px; background-color: #6a5acd; color: white; border: none; border-radius: 8px; cursor: pointer;">View Dashboard</button>`;
+                coursesGrid.appendChild(card);
+            });
+        }
+    }
+
+    if (!matchFound) {
+        coursesGrid.innerHTML = '<div class="no-results">No related students found for this course.</div>';
+    }
+}
+
+document.getElementById('searchinput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchCourses();
+    }
+});
+    </script>
+</body>
+</html>

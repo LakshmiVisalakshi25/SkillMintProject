@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+  <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <link rel="stylesheet" href="login(external).css">
+    
+</head>
+<body>
+    <!-- Background video -->
+        <video class="background-video" autoplay muted loop>
+            <source src="video-4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+    
+    <div class="main">
+        
+        <h1>Login</h1>
+        <form onsubmit="login(event)">
+            <div class="form-group">
+                <label for="studentEmail"><span style="font-size: 20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Email :</span></label><br><br>
+                <input type="email" id="studentEmail" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="studentPassword"><span style="font-size: 20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Password :</span></label><br><br>
+                <input type="password" id="studentPassword" name="password"  placeholder="Enter your Password" required minlength="8" style="display: flex;justify-content: center;">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn-back"><span style="color:white;font-size: 20px;" onclick="window.location.href='Main.html'">Back to Home</span></button>
+                <button type="submit" class="btn-primary"><span style="color:white;font-size: 20px;" ><a href="../Sindhu/stu3final.html" onclick="home()" style="text-decoration: none;color:white;">Login</a></span></button>
+            </div>
+            <p class="register-link" style="font-size: 25px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: flex; justify-content: center;">
+                don't have an account?&nbsp;&nbsp;&nbsp;<a href="signupp.html" style="color:blue;font-size: 20px;font-family:sans-serif;text-decoration: none;" onclick="signupp()">SignUp</a>
+            </p>
+            
+        </form>
+    
+        
+
+    </div>
+    <script>
+        function signupp() {
+            window.location.href = "signupp.html";
+        }
+        function home() {
+            window.location.href = "student-dashboard.html";
+        }
+        
+        
+    </script>
+    <script>
+  function login(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      alert("Invalid credentials!");
+      return;
+    }
+
+    // Redirect to role-based dashboard
+    switch (user.role) {
+      case "student":
+        window.location.href = "student-dashboard.html";
+        break;
+      case "instructor":
+        window.location.href = "instructor-dashboard.html";
+        break;
+      case "recruiter":
+        window.location.href = "recruiter-dashboard.html";
+        break;
+      case "alumni":
+        window.location.href = "alumni-dashboard.html";
+        break;
+      default:
+        alert("Unknown role!");
+    }
+  }
+</script> 
+    <!-- login.html -->
+<!-- <form onsubmit="login(event)">
+  <h2>Login</h2>
+  <input type="email" id="loginEmail" placeholder="Email" required />
+  <input type="password" id="loginPassword" placeholder="Password" required />
+  <button type="submit">Login</button>
+</form>
+
+<script>
+  function login(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) {
+      alert("Invalid credentials!");
+      return;
+    }
+
+    // Redirect to role-based dashboard
+    switch (user.role) {
+      case "student":
+        window.location.href = "student-dashboard.html";
+        break;
+      case "instructor":
+        window.location.href = "instructor-dashboard.html";
+        break;
+      case "recruiter":
+        window.location.href = "recruiter-dashboard.html";
+        break;
+      case "alumni":
+        window.location.href = "alumni-dashboard.html";
+        break;
+      default:
+        alert("Unknown role!");
+    }
+  }
+</script> -->
+    
+</body>
+</html>

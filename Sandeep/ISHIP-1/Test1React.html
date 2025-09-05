@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <title>Interactive React Quiz</title>
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+        background: radial-gradient(circle at top left, #a6d1ef, #ffffff);
+      font-family: 'Poppins' !important;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .question-container {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 25px;
+      background-color: #db6fdbc3;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      color: #1E3A6C;
+      max-width: 90%;
+    }
+
+    .bubble {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      position: absolute;
+      top: 100vh;
+      color: #333;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 15px;
+      transition: transform 0.5s, background-color 0.5s, border 0.5s, box-shadow 0.3s;
+      animation: moveUp var(--animation-duration) linear infinite;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .bubble:hover {
+      background-color: #f3f3f3;
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes moveUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-130vh); opacity: 0; }
+    }
+
+    @keyframes burstCorrect {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.6; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    .bubble.correct {
+      background-color: #00c853;
+      border-color: #00c853;
+      color: white;
+    }
+    
+    .bubble.burst {
+      animation: burstCorrect 0.8s forwards;
+    }
+
+    .bubble.incorrect {
+      border: 4px solid #ff1744;
+      background-color: #ffebee;
+      animation-play-state: paused;
+    }
+
+    #quiz {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .score-display {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      color:  #4caf50;
+    }
+
+    .score-display h2 {
+      font-size: 2.2rem;
+    }
+
+    .score-display button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #1E3A6C;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .score-display button:hover {
+      background:  #4caf50;
+    }
+
+    @media screen and (max-width: 600px) {
+      .question-container {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+      }
+
+      .bubble {
+        width: 120px;
+        height: 120px;
+        font-size: 0.8rem;
+        padding: 8px;
+        overflow-wrap: break-word; 
+      }
+
+      .score-display h2 {
+        font-size: 1.6rem;
+      }
+
+      .score-display button {
+        padding: 10px 25px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container">
+    <h2 id="question">Question Text</h2>
+  </div>
+
+  <div class="quiz-container" id="quiz"></div>
+
+  <script>
+    const quizContainer = document.getElementById('quiz');
+    const questionEl = document.getElementById('question');
+
+    const quizData = [
+      {
+        question: "1. What is the purpose of React?",
+        options: {
+          a: "Server-side programming",
+          b: "Database management",
+          c: "Building user interfaces",
+          d: "Managing file systems"
+        },
+        correct: "c"
+      },
+      {
+        question: "2. What is JSX in React?",
+        options: {
+          a: "A JavaScript extension that looks like XML",
+          b: "A data transfer protocol",
+          c: "A type of API",
+          d: "A CSS preprocessor"
+        },
+        correct: "a"
+      },
+      {
+        question: "3. Which method is used to render React content to the DOM?",
+        options: {
+          a: "React.mount()",
+          b: "React.render()",
+          c: "ReactDOM.render()",
+          d: "DOM.render()"
+        },
+        correct: "c"
+      },
+      {
+        question: "4. In which language is React written?",
+        options: {
+          a: "Java",
+          b: "TypeScript",
+          c: "C++",
+          d: "JavaScript"
+        },
+        correct: "d"
+      },
+      {
+        question: "5. What are components in React?",
+        options: {
+          a: "Templates",
+          b: "Functions or classes that return UI elements",
+          c: "Styling rules",
+          d: "Server-side logic"
+        },
+        correct: "b"
+      },
+      {
+        question: "6. How do you pass data from parent to child in React?",
+        options: {
+          a: "Props",
+          b: "State",
+          c: "Context",
+          d: "Redux"
+        },
+        correct: "a"
+      },
+      {
+        question: "7. What is the use of useState in React?",
+        options: {
+          a: "To create server requests",
+          b: "To manage component styling",
+          c: "To add state to functional components",
+          d: "To handle routing"
+        },
+        correct: "c"
+      },
+      {
+        question: "8. What does the key property do in React lists?",
+        options: {
+          a: "Styles the list",
+          b: "Animates the list items",
+          c: "Helps React identify which items changed",
+          d: "Hides the list item"
+        },
+        correct: "c"
+      },
+      {
+        question: "9. What is a controlled component in React?",
+        options: {
+          a: "A component that handles errors",
+          b: "A component with no props",
+          c: "A form element controlled by state",
+          d: "A component that controls child routes"
+        },
+        correct: "c"
+      },
+      {
+        question: "10. Which hook is used to perform side effects in React?",
+        options: {
+          a: "useState()",
+          b: "useEffect()",
+          c: "useReducer()",
+          d: "useMemo()"
+        },
+        correct: "b"
+      }
+    ];
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    function loadQuiz() {
+      const currentQuizData = quizData[currentQuiz];
+      questionEl.innerText = currentQuizData.question;
+      createBubbles(currentQuizData.options);
+    }
+
+    function createBubbles(options) {
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => bubble.remove());
+
+      Object.keys(options).forEach(key => {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.id = key;
+        bubble.innerText = options[key];
+
+        const startLeft = Math.random() * (window.innerWidth - 160);
+        const duration = 10 + Math.random() * 5;
+        const delay = Math.random() * duration;
+
+        bubble.style.left = `${startLeft}px`;
+        bubble.style.setProperty('--animation-duration', `${duration}s`);
+        bubble.style.animationDelay = `${delay}s`;
+
+        bubble.addEventListener('click', () => {
+          handleAnswer(bubble, key);
+        });
+
+        quizContainer.appendChild(bubble);
+      });
+    }
+
+    function handleAnswer(clickedBubble, answerKey) {
+      const correctKey = quizData[currentQuiz].correct;
+      
+      const currentTransform = window.getComputedStyle(clickedBubble).transform;
+      
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => {
+        bubble.style.animationPlayState = 'paused';
+      });
+
+      if (answerKey === correctKey) {
+        score++;
+        
+        clickedBubble.style.animation = 'none';
+        
+        clickedBubble.style.transform = currentTransform;
+        
+        void clickedBubble.offsetWidth;
+        
+        clickedBubble.classList.add('correct');
+
+        setTimeout(() => {
+          clickedBubble.classList.add('burst');
+        }, 500); 
+
+      } else {
+        clickedBubble.classList.add('incorrect');
+        const correctBubble = document.getElementById(correctKey);
+        if (correctBubble) {
+          const correctBubbleTransform = window.getComputedStyle(correctBubble).transform;
+          correctBubble.style.animation = 'none';
+          correctBubble.style.transform = correctBubbleTransform;
+          void correctBubble.offsetWidth;
+          correctBubble.classList.add('correct');
+          
+          setTimeout(() => {
+            correctBubble.classList.add('burst');
+          }, 500);
+        }
+      }
+
+      setTimeout(() => {
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+          loadQuiz();
+        } else {
+          showScore();
+        }
+      }, 1500);
+    }
+
+    function showScore() {
+      quizContainer.innerHTML = `
+        <div class="score-display">
+          <h2>🎉 You scored ${score} out of ${quizData.length}!</h2>
+          <button onclick="location.reload()">Play Again</button>
+        </div>
+      `;
+    }
+
+    loadQuiz();
+  </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alumni Signup Form</title>
+  <link rel="stylesheet" href="alumni.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/brands.min.css" integrity="sha512-mXqwRsOznG7CS37KA7CLR1Fc72gfOgp7r8xaVdBKoBKhitcKI/mK+IamtZUf+FAkufXOvVTESu9lPsoQc+kFxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  
+</head>
+<body>
+  <div class="form-container">
+    <h2 style="text-align: center;">Alumni Signup Form</h2>
+    <div class="main">
+        <div class="main2">
+            <div class="heading">
+                <h1>SkillMint</h1>
+                <h2>Join Our Learning Community</h2>
+                <p>Create your account to start your educational journey</p>
+            </div>
+
+            <!-- Role Selection Tabs -->
+            <div class="role-tabs">
+                <div class="tab-indicator" id="tabIndicator"></div>
+                <button class="tab-button active" data-role="student">
+                    <a href="signupp.html">🎓 I'm a Student</a>
+                </button>
+                <button class="tab-button active" data-role="instructor">
+                    <a href="instructorsignup.html">👨‍🏫 I'm an Instructor</a>
+                </button>
+                <button class="tab-button active" data-role="instructor">
+                    <a href="recruitersignupform.html">💼 I'm an Recruiter</a>
+                </button>
+                <button class="tab-button active" data-role="instructor">
+                    <a href="Alumni.html">👨‍🎓 I'm an Alumni</a>
+                </button>
+                
+            </div>
+
+    <form action="#">
+
+      <!-- Personal Info -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" name="fullName" required>
+        </div>
+        <div class="form-group4">
+          <label>Email Address *</label>
+          <input type="email" name="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+            <div class="form-group">
+                <label>Password *</label>
+                <input type="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password *</label>
+                <input type="password" name="confirmPassword" required>
+            </div>
+        </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div class="form-field">
+          <label>Student ID / Roll Number</label>
+          <input type="text" name="rollNumber">
+        </div>
+      </div>
+
+      <!-- Academic Info -->
+      <div class="form-row">
+        <div class="form-field">
+          <label>Course / Degree</label>
+          <input type="text" name="course">
+        </div>
+        <div class="form-field">
+          <label>Department</label>
+          <input type="text" name="department">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Year of Graduation</label>
+          <input type="number" name="gradYear" min="1950" max="2099">
+        </div>
+        <div class="form-field">
+          <label>College / University</label>
+          <input type="text" name="college">
+        </div>
+      </div>
+
+      <!-- Professional Info -->
+      <div class="form-row">
+        <div class="form-field">
+          <label>Job Title / Designation</label>
+          <input type="text" name="jobTitle">
+        </div>
+        <div class="form-field">
+          <label>Company / Organization</label>
+          <input type="text" name="company">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Industry</label>
+          <input type="text" name="industry">
+        </div>
+        <div class="form-field">
+          <label>Work Location (City, Country)</label>
+          <input type="text" name="workLocation">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label>Years of Experience</label>
+          <input type="number" name="experience" min="0">
+        </div>
+        <div class="form-field">
+          <label>LinkedIn Profile</label>
+          <input type="url" name="linkedin">
+        </div>
+      </div><br>
+
+      <!-- Preferences -->
+      <!-- <div class="form-field">
+        <label>Would you like to receive newsletters and event updates?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="newsletter" value="Yes"> Yes</label>
+          <label><input type="checkbox" name="newsletter" value="No"> No</label>
+        </div>
+      </div> -->
+
+      <div class="form-field">
+        <label>Preferred Mode of Contact</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="contactMode" value="Email"> Email</label>
+          <label><input type="checkbox" name="contactMode" value="Phone"> Phone</label>
+          <label><input type="checkbox" name="contactMode" value="WhatsApp"> WhatsApp</label>
+        </div>
+      </div><br>
+
+      <!-- Additional Info -->
+      <div class="form-field">
+        <label>Achievements or Contributions (optional)</label>
+        <textarea name="achievements" rows="3"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label>Areas of Interest for Alumni Involvement</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="interests" value="Mentoring"> Mentoring</label>
+          <label><input type="checkbox" name="interests" value="Guest Lectures"> Guest Lectures</label>
+          <label><input type="checkbox" name="interests" value="Placements"> Placements</label>
+          <label><input type="checkbox" name="interests" value="Donations"> Donations</label>
+          <label><input type="checkbox" name="interests" value="Events"> Events</label>
+        </div><br>
+      </div>
+
+      <div class="form-field">
+        <label>Upload Resume / Profile Picture (optional)</label>
+        <input type="file" name="upload">
+      </div>
+
+      <!-- Consent -->
+      <div class="form-field">
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="consent" required> I agree to share my details with the alumni association.</label>
+          <label><input type="checkbox" name="communicationConsent" required> I consent to receive communication from the institution.</label>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-group button-column" style="grid-column: 1 / -1;">
+            <button type="button" class="btn-back" onclick="window.location.href='Main.html'">Back to Home</button>
+            <button type="submit" class="btn-primary" onclick="window.location.href='Referals.html'"><a href="Referals.html" style="text-decoration: none;color: white;font-weight: bold;">Create Alumni Account</a></button>
+      </div>
+      <!-- Social Login -->
+          <div class="social-login" style="grid-column: 1 / -1;">
+              <p>or continue with</p>
+              <div class="social-buttons">
+                <button type="button" class="social-btn"><span class="google"><i class="fa-brands fa-google"></i></span> Google</button>
+                <button type="button" class="social-btn"><span class="facebook"><i class="fa-brands fa-facebook"></i></span> Facebook</button>
+                <button type="button" class="social-btn"><span class="linkedin"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</button>
+              </div>
+          </div>
+    </form>
+  </div>
+</body>
+</html>

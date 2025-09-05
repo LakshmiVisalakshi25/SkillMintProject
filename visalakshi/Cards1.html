@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <title>SKILLMINT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <style>
+body {
+  margin: 0;
+  font-family: 'Poppins' !important;
+  background-color: #f5f5f5;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+.footer1{
+    height: 80px;
+    background-color: rgb(184, 183, 183);
+    padding-top: 0px;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.left img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.left h1 {
+  color: #1e3a6c;
+  margin: 0;
+  font-size: 24px;
+}
+
+.sections {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.sections a {
+  text-decoration: none;
+  color: #1e3a6c;
+  font-size: 20px;
+}
+
+.sections a:hover{
+  color: #4CAF50;
+}
+
+.sections i {
+  color: #1e3a6c;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #1e3a6c;
+  cursor: pointer;
+}
+.sections span.close {
+  display: none;
+  font-size: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 320px;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #2d3436;
+}
+
+.card .job-title {
+  color:#1E3A6C;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #636e72;
+  margin: 6px 0;
+}
+
+.card blockquote {
+  font-style: italic;
+  color: #2d3436;
+  border-left: 4px solid #1E3A6C;
+  padding-left: 10px;
+  margin-top: 12px;
+}
+.footer{
+  height: 80px;
+  background-color: rgb(184, 183, 183);
+  padding-top: 0px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 23px;
+  left:-50px;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.dropdown-content div {
+  color: #1E3A6C;
+  padding: 10px 16px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dropdown-content div:hover {
+  background-color: #d3d3eb;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+   
+.sections > a[href="Main.html"] {
+  display: none;
+}
+.user-menu {
+  position: relative;  
+  cursor: pointer;
+  display: inline-block; 
+}
+
+.user-dropdown {
+  position: absolute;
+  right: -30px;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  min-width: 140px;
+  z-index: 10;
+}
+
+
+.user-menu:hover .user-dropdown {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .sections > a[href="Main.html"] {
+    display: block;
+  }
+  .user-menu.desktop-only {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+    .dropdown{
+  display: none;
+}
+  .sections {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: 100vh;
+    background-color: #e4ecf4;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    align-items: flex-start;
+  }
+
+  .sections span.close {
+    display: block;
+    align-self: flex-end;
+  }
+
+  .sections a {
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .sections i {
+    margin-top: 20px;
+  }
+  .hamburger {
+    display: block;
+  }
+
+}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="left">
+      <img src="logo_final.png" alt="Logo" />
+      <h1>SKILLMINT</h1>
+    </div>
+    <div class="hamburger" onclick="openMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="sections" id="menu">
+  <span class="close" onclick="closeMenu()">&times;</span>
+  <a href="Referals.html">Referrals</a>
+  <a href="Cards1.html">Share Journey</a>
+  <a href="Main.html">Logout</a> 
+  <div class="user-menu desktop-only">
+        <div class="user-icon"><i class="fa-solid fa-circle-user"></i></div>
+        <div class="user-dropdown">
+          <a href="Main.html">Logout</a>
+        </div>
+      </div>
+</div>
+
+</div>
+
+  </nav>
+  <h1 style="text-align:center; color:#1E3A6C;">🎓 Skill Mint Alumni Success Stories</h1>
+
+  <div class="container">
+    
+
+    <div class="card">
+      <h3>Rajeev Kumar</h3>
+      <div class="job-title">Python Developer at TechSphere</div>
+      <p><strong>Before Skill Mint:</strong> Computer Science graduate but lacked industry-ready skills in Python.</p>
+      <p><strong>Journey:</strong> Took Python Programming course, completed multiple real-world projects, participated in coding challenges.</p>
+      <p><strong>Result:</strong> Secured a job as a Python Developer in 2 months after completing the course.</p>
+      <blockquote>"Skill Mint not only taught me Python, but gave me the skills to build impactful projects and get hired."</blockquote>
+    </div>
+
+    <div class="card">
+      <h3>Sanjay Patel</h3>
+      <div class="job-title">Java Developer at SoftTech Solutions</div>
+      <p><strong>Before Skill Mint:</strong> Java beginner, unsure about where to start in the tech industry.</p>
+      <p><strong>Journey:</strong> Completed the Java Full Stack Developer course, built a strong portfolio with 5 backend projects.</p>
+      <p><strong>Result:</strong> Hired by SoftTech Solutions as a Java Developer within 3 months of completing the course.</p>
+      <blockquote>"Skill Mint taught me everything from Java basics to building scalable applications, and got me my dream job!"</blockquote>
+    </div>
+
+
+    <div class="card">
+      <h3>Priya Verma</h3>
+      <div class="job-title">Frontend Developer at CodeTech</div>
+      <p><strong>Before Skill Mint:</strong> Graphic designer with no web development experience.</p>
+      <p><strong>Journey:</strong> Completed Full-Stack Web Development Bootcamp, learned HTML, CSS, JavaScript, and React.</p>
+      <p><strong>Result:</strong> Landed a full-time role as a Frontend Developer at CodeTech in 4 months.</p>
+      <blockquote>"Skill Mint's practical approach to learning helped me transition from a designer to a frontend developer seamlessly."</blockquote>
+    </div>
+
+  </div>
+  <div class="footer">
+        <center>
+            <p>&copy;SkillMint All rights reserved</p>
+            <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-linkedin"></i>
+        </center>
+    </div>
+
+<script>
+    function openMenu() {
+      document.getElementById("menu").style.left = "0";
+    }
+    function closeMenu() {
+      document.getElementById("menu").style.left = "-250px";
+    }
+</script>
+</body>
+</html>

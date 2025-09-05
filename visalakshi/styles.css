@@ -1,0 +1,231 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: blueviolet;
+}
+
+/* Main Container */
+.main {
+    width: 100%;
+    min-height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card Wrapper */
+.main2 {
+    width: 100%;
+    max-width: 900px;
+    background-color: ghostwhite;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.heading {
+    color: blueviolet;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.heading h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.heading h2 {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.heading p {
+    color: cadetblue;
+    font-size: 1rem;
+}
+
+/* Role Tabs */
+.role-tabs {
+    display: flex;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tab-button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tab-button.active {
+    color: #4f46e5;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button:hover {
+    background-color: #e5e7eb;
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    padding-top: 10px;
+}
+
+/* Form Layout */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Form Elements */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Multi-select fix */
+select[multiple] {
+    height: auto;
+}
+
+/* Buttons */
+button[type="submit"],
+button[type="button"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+    background: linear-gradient(to right, #7f3ce0, #6344ff);
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #6c33c9, #523adf);
+}
+
+button[type="button"] {
+    background-color: #ddd;
+}
+
+button[type="button"]:hover {
+    background-color: #ccc;
+}
+
+/* Checkbox Labels */
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Terms and Social */
+.form-group.terms {
+    grid-column: 1 / -1;
+}
+
+.form-group.buttons {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.social-login {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+}
+
+.social-login button {
+    margin: 5px 10px;
+    background-color: #f3f4f6;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 16px;
+}
+
+.social-login button:hover {
+    background-color: #e5e7eb;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .heading h1 {
+        font-size: 2rem;
+    }
+
+    .heading h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
+
+    .tab-button {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    button[type="submit"],
+    button[type="button"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .social-login button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

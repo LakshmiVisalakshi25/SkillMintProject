@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="../Harini/assets/logo.png">
+    <title> Internships</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Poppins' !important;
+        }
+
+        .navbar {
+            height: 70px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .submenu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            color: #1E3A6C;
+        }
+
+        @media (max-width: 768px) {
+            .submenu {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+        }
+
+        .logoh {
+            color: #1e3a6c;
+            margin: 0;
+        }
+
+        .profile {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            color: #4CAF50;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            min-width: 120px;
+            z-index: 99;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-align: center;
+            color: #1e3a6c;
+        }
+
+        .dropdown a:hover {
+            background-color: #e0e0e0;
+            color: #4CAF50;
+        }
+
+        .opportunities-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-opportunities:hover .opportunities-dropdown-content {
+            display: block;
+        }
+
+        .opportunities-dropdown-content a {
+            text-align: center;
+            display: block;
+            color: #1E3A6C;
+            text-decoration: none;
+        }
+
+        .opportunities-dropdown-content a:hover {
+            color: #4CAF50;
+        }
+
+
+        .mobilenavbar {
+            width: 200px;
+            height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            padding: 10px;
+            position: absolute;
+            transition: left 1s linear;
+            left: -200px;
+            top: 0px;
+            background-color: white;
+        }
+
+        .mobilenavbar div {
+            width: 100%;
+            font-size: 30px;
+            border-bottom: 1px solid grey;
+            cursor: pointer;
+            color: #1E3A6C;
+        }
+
+        .mobilenavbar div:hover {
+            background-color: rgb(250, 241, 215);
+        }
+
+
+        .submenu a,
+        .mobilenavbar a {
+            text-decoration: none;
+            color: #1E3A6C;
+            font-size: 20px;
+            padding: 10px 0px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .submenu a:hover,
+        .mobilenavbar a:hover {
+            background-color: #f1f1f1;
+            border-radius: 6px;
+        }
+
+        .submenu a {
+            font-size: 20px;
+        }
+
+        .mobilenavbar a {
+            width: 100%;
+            font-size: 25px;
+            border-bottom: 1px solid grey;
+        }
+   /* hero section */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: #fff;
+        }
+
+        .hero-left,
+        .hero-right {
+            flex: 1 1 300px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            color: #1E3A6C;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .btn-dark-blue {
+            background-color: #1E3A6C;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: 600;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .btn-outline-dark-blue {
+            color: #1E3A6C;
+            border: 2px solid #1E3A6C;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: 600;
+            background: none;
+        }
+
+
+        .category-section {
+            width: 100%;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #f2f0f0;
+            border-radius: 12px;
+        }
+
+        .category-label {
+            font-weight: bold;
+            text-align: center;
+            color: #1E3A6C;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .category-box {
+            background-color: #edeaea;
+            border-radius: 25px;
+            padding: 10px 16px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: #1E3A6C;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .category-box:hover {
+            background-color: #e0e0e0;
+        }
+
+        .icon-circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        .category-icon {
+            color: #1E3A6C;
+            font-size: 15px;
+        }
+
+
+        .highlight-box {
+            background-color: #FFD700;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 14px;
+            color: #1E3A6C;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* carousel styles */
+        :root {
+            --card-bg: #FFFFFF;
+            --card-border: #E0E0E0;
+            --header-bg-purple: #8B5CF6;
+            --header-bg-dark-purple: #6D28D9;
+            --tag-wfh-bg: #F0F0F0;
+            --tag-wfh-text: #333333;
+            --tag-hiring-bg: #FFD700;
+            --tag-hiring-text: #333333;
+            --detail-icon-color: #333333;
+            --detail-text-color: #666666;
+            --apply-btn-icon: #FFFFFF;
+        }
+
+        .main-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            padding: 20px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            color: #1E3A6C;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 20px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-nav-btn:hover {
+            opacity: 1;
+        }
+
+        .carousel-nav-btn.left {
+            left: 0px;
+        }
+
+        .carousel-nav-btn.right {
+            right: 0px;
+        }
+
+        /* --- CAROUSEL CARD STYLES --- */
+        .carousel-card {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 360px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .carousel-card-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, var(--header-bg-purple) 0%, var(--header-bg-dark-purple) 100%);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .carousel-card-header-bg::before,
+        .carousel-card-header-bg::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .carousel-card-header-bg::before {
+            width: 120px;
+            height: 120px;
+            top: -50px;
+            left: -30px;
+            background-color: var(--header-bg-dark-purple);
+            opacity: 0.6;
+        }
+
+        .carousel-card-header-bg::after {
+            width: 80px;
+            height: 80px;
+            top: 30px;
+            right: 0px;
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 0.8;
+        }
+
+        .carousel-company-logo-container {
+            position: absolute;
+            top: 35px;
+            right: 25px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .carousel-company-logo {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .carousel-tags-container {
+            margin-top: 60px;
+            padding: 0 25px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+            position: relative;
+        }
+
+        .carousel-tag {
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .carousel-tag-wfh {
+            background-color: var(--tag-wfh-bg);
+            color: var(--tag-wfh-text);
+        }
+
+        .carousel-tag-actively-hiring {
+            background-color: var(--tag-hiring-bg);
+            color: var(--tag-hiring-text);
+        }
+
+        .carousel-tag-actively-hiring .fas.fa-bolt {
+            color: #FFA500;
+        }
+
+        .carousel-job-title {
+            font-size: 1.6em;
+            color: #1E3A6C;
+            margin: 20px 25px 5px 25px;
+            line-height: 1.3;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .carousel-company-name {
+            font-size: 1em;
+            color: var(--company-name-gray);
+            margin: 0 25px 10px 25px;
+            font-weight: 400;
+            z-index: 1;
+        }
+
+        .carousel-card-footer-flex {
+            margin-top: auto;
+            padding: 0px 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+
+        .carousel-job-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+            flex-basis: content;
+        }
+
+        .carousel-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: var(--detail-text-color);
+            font-weight: 500;
+        }
+
+        .carousel-detail-item .fas {
+            color: var(--detail-icon-color);
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+        }
+
+        .carousel-apply-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .carousel-apply-btn:hover {
+            background-color: #1A54C0;
+        }
+
+        .carousel-apply-btn .fas {
+            color: var(--apply-btn-icon);
+            font-size: 1.3em;
+        }
+
+
+        /* NEW STYLES FOR FETCHED JOBS - TO MATCH THE IMAGE */
+        .opportunities-section {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .opportunities-section h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #1E3A6C;
+            margin-bottom: 20px;
+        }
+
+        #opportunities-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .fetched-job-card {
+            width: 320px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .fetched-job-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fetched-card-header {
+            display: flex;
+            gap: 15px;
+        }
+
+        .fetched-card-logo-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+            flex-shrink: 0;
+            /* Prevents container from shrinking */
+        }
+
+        .fetched-card-logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Ensures the image fits without distortion */
+        }
+
+        .fetched-job-title-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .fetched-job-title-container h3 {
+            font-size: 1.2em;
+            color: #1E3A6C;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .fetched-job-title-container p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.2;
+        }
+
+        .fetched-job-title-container p i {
+            margin-right: 5px;
+        }
+
+        .fetched-card-middle {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .fetched-salary {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1E3A6C;
+            margin-right: 10px;
+        }
+
+        .fetched-badge {
+            font-size: 0.75em;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .fetched-internship-badge {
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+
+        .fetched-student-badge {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+
+        .fetched-description {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .fetched-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .fetched-card-footer small {
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        .fetched-apply-btn {
+            background-color: #1E3A6C;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .fetched-apply-btn:hover {
+            background-color: #0d284f;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            color: #1E3A6C;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-content input, .modal-content textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Poppins';
+        }
+
+        .modal-content button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Poppins';
+        }
+
+
+        /* General Responsive adjustments */
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 40px 15px;
+            }
+
+            .hero-left,
+            .hero-right {
+                flex: 1 1 100%;
+                min-width: unset;
+            }
+
+            .hero-left {
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
+
+            .hero-left div {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .btn-dark-blue,
+            .btn-outline-dark-blue {
+                width: 80%;
+                max-width: 250px;
+                margin: 0;
+            }
+
+            .hero-right {
+                margin-top: 30px;
+                text-align: center;
+            }
+
+            .hero-img {
+                max-width: 80%;
+                height: auto;
+            }
+
+            .highlight-box {
+                margin-top: 15px;
+            }
+
+            .fetched-card-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .fetched-card-footer small {
+                margin-right: unset;
+                order: 2;
+                /* Move the small text below the button */
+            }
+
+            .fetched-apply-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-nav-btn {
+                display: none;
+            }
+
+            .carousel-wrapper {
+                padding: 0 10px;
+            }
+
+            .carousel {
+                padding-bottom: 15px;
+            }
+
+            .carousel-card {
+                width: 280px;
+                height: 340px;
+            }
+
+            .carousel-company-logo-container {
+                width: 70px;
+                height: 70px;
+                top: 40px;
+            }
+
+            .carousel-job-title {
+                font-size: 1.4em;
+                margin-top: 15px;
+            }
+
+            .carousel-company-name {
+                margin-bottom: 8px;
+            }
+
+            .carousel-card-footer-flex {
+                padding-top: 8px;
+            }
+
+            .carousel-detail-item {
+                font-size: 0.85em;
+            }
+
+            .carousel-apply-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 24px;
+            }
+
+            .section-title p {
+                font-size: 14px;
+                padding: 0 15px;
+            }
+
+            .carousel {
+                gap: 15px;
+                padding: 0 10px 10px;
+            }
+
+            .carousel-card {
+                width: 90%;
+                height: 320px;
+            }
+
+            .carousel-tags-container {
+                padding: 0 15px;
+                margin-top: 70px;
+            }
+
+            .carousel-job-title,
+            .carousel-company-name,
+            .carousel-card-footer-flex {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .carousel-company-logo-container {
+                top: 30px;
+                right: 15px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .carousel-apply-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-card-footer-flex {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .carousel-apply-btn {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #ebeff0;
+            color: #1E3A6C;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-areas:
+                "logo contact"
+                "social contact";
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .logo1 {
+            grid-area: logo;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 0.5rem;
+        }
+
+        .footer-contact {
+            grid-area: contact;
+            text-align: right;
+            color: #1E3A6C;
+            line-height: 1.4;
+        }
+
+        .footer-contact a {
+            text-decoration: none;
+            color: #1E3A6C;
+        }
+
+        .footer-contact a:hover {
+            color: #4CAF50;
+        }
+
+        .footer-social {
+            grid-area: social;
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+        }
+
+        .footer-social a {
+            color: #1E3A6C;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #4CAF50;
+        }
+
+        .rights {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-areas:
+                    "logo"
+                    "contact"
+                    "social";
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-contact {
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        .footer{
+    height: 80px;
+    background-color: rgba(212, 211, 211, 0.811);
+    padding-top: 10px;
+}
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="navbar">
+        <div class="brand" style="display: flex; align-items: center; gap: 6px;">
+            <img src="./skillmint.jpeg" width="70px" height="70px" alt="logo">
+            <h1 class="logoh">Skill Mint</h1>
+        </div>
+        <div class="submenu">
+            <a href="../Harini/Skills.html">Learn Track</a>
+
+            <div class="dropdown-opportunities">
+                <a href="#" style="cursor: pointer;">Opportunities</a>
+                <div class="opportunities-dropdown-content">
+                    <a href="stu1final.html">Internships</a>
+                    <a href="stu2final.html">Competitions</a>
+                </div>
+            </div>
+
+            <a href="stu3final.html">Insight Hub</a>
+
+            <div class="profile" onclick="toggleDropdown()">
+                <img src="./profile.png" width="30px" height="30px" alt="user">
+            </div>
+
+            <div class="dropdown" id="dropdownMenu">
+                <a href="stu3final.html">Profile</a>
+                <a href="../visalakshi/Main.html">Logout</a>
+            </div>
+        </div>
+        <div class="menu" style="font-size:25px; color:#1E3A6C;" onclick="open1()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="mobilenavbar">
+            <span style="font-size: 50px; color:#1E3A6C" onclick="close1()" class="wrong">×</span>
+            <a href="../Harini/Skills.html">Learn Track</a>
+            <a href="stu1final.html">Opportunities</a>
+            <a href="../Sindhu/stu3final.html">Insight Hub</a>
+            <a href="../../visalakshi/Main.html">Logout</a>
+        </div>
+    </div>
+    <section class="hero-section">
+        <div class="hero-left">
+            <h1 class="hero-title">Explore <span style="color: #4CAF50">Opportunities</span></h1>
+            <p class="hero-subtitle">Discover hiring options, skill-building programs, and company connections tailored
+                for your growth journey.
+            <div>
+                <button class="btn-dark-blue" onclick="scrollToSection('recommended-internships')">Find Internships</button>
+                <button class="btn-outline-dark-blue" style="color:white; background-color:#4CAF50" onclick="openModal()"><i
+                        class="fas fa-plus"></i> Post Internships</button>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="./intern.png" alt="Hero Image" class="hero-img">
+            <div class="highlight-box">10M+ Got hiring opportunities</div>
+        </div>
+        <div class="category-section">
+            <p class="category-label">Internships Category</p>
+            <div class="category-container">
+                <div class="category-box">
+                    <div class="icon-circle" style="background-color: #e0f2ff;"><i
+                            class="fas fa-user category-icon"></i></div>
+                    Human Resources
+                </div>
+                <div class="category-box" onclick="scrollToSection('fetched-internships-section')">
+                    <div class="icon-circle" style="background-color: #e6f4ea;"><i
+                            class="fas fa-code category-icon"></i></div>
+                    Software Development
+                </div>
+                <div class="category-box">
+                    <div class="icon-circle" style="background-color: #fff3e0;"><i
+                            class="fas fa-bullhorn category-icon"></i></div>
+                    Marketing
+                </div>
+                <div class="category-box">
+                    <div class="icon-circle" style="background-color: #f3e5f5;"><i
+                            class="fas fa-cogs category-icon"></i></div>
+                    Operations
+                </div>
+                <div class="category-box">
+                    <div class="icon-circle" style="background-color: #f0f4c3;"><i
+                            class="fas fa-rupee-sign category-icon"></i></div>
+                    Finance
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="main-content-wrapper" id="recommended-internships">
+        <div class="section-title">
+            <h2>Recommended Internships</h2>
+            <p>Looking for the best of the best? Here's the top-rated internships by the learners' community.</p>
+        </div>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-nav-btn left" onclick="scrollCarousel(-1)">❮</button>
+
+            <div class="carousel" id="recommendedCarousel">
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/68722ba172a5b_organisation_image-p7Lrs0x1hQ1253129105cfFhWpEJps.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">WFH</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            <i class="fas fa-bolt"></i> Tech
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">Frontend Dev Internship</h3>
+                    <p class="carousel-company-name">FlatUIUX</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">3323 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">8K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=flatuiux"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/687e39e46ac57_organisation_image-aOA9E3uRPA1798835989NuwpmRDxLA.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">Hybrid</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            demand
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">Digital Marketing Intern</h3>
+                    <p class="carousel-company-name">Tech Solutions Inc.</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">1500 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">10K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=techsolutions%20inc%20backend"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6811e94170d40_organisation_image-R2n7yQsQr41229106162B8duz6R8VG.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">In-Office</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            <i class="fas fa-bolt"></i> New
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">UI/UX Designer Intern</h3>
+                    <p class="carousel-company-name">Creative Studio</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">800 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">7K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=uiux%20des"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6861105d46d70_organisation_image-WTsNWB8NKk1912833709HUcWqdULpe.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">Remote</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            Popular
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">Data Science Intern</h3>
+                    <p class="carousel-company-name">Analytics Hub</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">2500 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">12K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=data%20science"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/687b9b3851c5e_organisation_image-QniflfipNk1611216331X6SB4lxuLU.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">In-Office</span>
+
+                    </div>
+                    <h3 class="carousel-job-title">Marketing Intern</h3>
+                    <p class="carousel-company-name">Brand Builders</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">1800 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">6K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=marketing"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/687b2d93890a1_organisation_image-vqssjSzC8H9764732571VSpLdsJVS.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">Hybrid</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            Demand
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">HR Intern</h3>
+                    <p class="carousel-company-name">People First Co.</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">950 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">5.5K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=hr"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <div class="carousel-card-header-bg"></div>
+                    <div class="carousel-company-logo-container">
+                        <img src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6884b1d8db7a5_organisation_image-lMJFLvjQGA84104600748BSd4TgxV.png?d=200x200"
+                            alt="Company Logo" class="carousel-company-logo">
+                    </div>
+                    <div class="carousel-tags-container">
+                        <span class="carousel-tag carousel-tag-wfh">Remote</span>
+                        <span class="carousel-tag carousel-tag-actively-hiring">
+                            <i class="fas fa-bolt"></i> Tech
+                        </span>
+                    </div>
+                    <h3 class="carousel-job-title">Software Engineer Intern</h3>
+                    <p class="carousel-company-name">Global Tech</p>
+                    <div class="carousel-card-footer-flex">
+                        <div class="carousel-job-details">
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-users"></i>
+                                <span class="carousel-detail-text">4000 Applied</span>
+                            </div>
+                            <div class="carousel-detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span class="carousel-detail-text">15K/Month</span>
+                            </div>
+                        </div>
+                        <a href="https://unstop.com/internships?oppstatus=recent&searchTerm=software%20engineering"
+                            class="carousel-apply-btn" aria-label="Apply for Internship">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav-btn right" onclick="scrollCarousel(1)">❯</button>
+        </div>
+    </div>
+
+    <div class="opportunities-section" id="fetched-internships-section">
+        <h2>Internships</h2>
+        <div id="opportunities-container"></div>
+    </div>
+
+    <div id="postInternshipModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3>Post an Internship</h3>
+            <form id="postInternshipForm">
+                <input type="text" id="internshipRole" placeholder="Internship Role" required>
+                <input type="text" id="companyName" placeholder="Company Name" required>
+                <input type="text" id="location" placeholder="Location" required>
+                <input type="text" id="salary" placeholder="Salary (e.g., ₹10K/MTH)">
+                <textarea id="description" placeholder="Brief Description" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+     <div class="footer">
+        <center>
+            <p>&copy;SkillMint All rights reserved</p>
+            <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-linkedin"></i>
+        </center>
+    </div>
+
+    <!-- <footer class="footer">
+        <div class="footer-container">
+            <div class="logo1">
+                <img src="./footerskillmint.png" alt="logo" style="height: 50px;width: 50px; border-radius: 50%;">
+                <h1>SKILL MINT</h1>
+
+            </div>
+            <div class="footer-contact">
+                <h2>Contact</h2>
+                <p><i class="fas fa-phone"></i> 0884-23 26 202,</p>
+                <p><i class="fas fa-envelope"></i> skillmint@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/AdityaEngineeringColleges/about/" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/AdityaEnggClg" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCQmzQy9b4i6Q6X86DkX1H1g" target="_blank"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=+919949876662" target="_blank"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/school/adityauniversity/posts/?feedView=all" target="_blank"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <p class="rights">© 2025 SKILL MINT. All Rights Reserved.</p>
+    </footer> -->
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest(".profile")) {
+                document.getElementById("dropdownMenu").style.display = "none";
+            }
+        }
+
+        function open1() {
+            document.getElementsByClassName("mobilenavbar")[0].style = "left:0px;"
+        }
+
+        function close1() {
+            document.getElementsByClassName("mobilenavbar")[0].style = "left:-200px;"
+        }
+        const carousel = document.getElementById('recommendedCarousel');
+
+        function scrollCarousel(direction) {
+            const card = carousel.querySelector('.carousel-card');
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = parseFloat(getComputedStyle(carousel).gap);
+                const scrollAmount = cardWidth + gap;
+
+                carousel.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Function to scroll to a section by its ID
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Post Internship Modal Functions
+        function openModal() {
+            document.getElementById('postInternshipModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('postInternshipModal').style.display = 'none';
+        }
+
+        // Close the modal when the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('postInternshipModal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Example for form submission (you would replace this with an actual API call)
+        document.getElementById('postInternshipForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Internship submitted! This is a placeholder. In a real app, this would send data to a server.');
+            closeModal();
+        });
+
+
+        async function fetchAndDisplayJobs() {
+            const container = document.getElementById('opportunities-container');
+            container.innerHTML = `<p style="text-align:center; padding:20px; color:#555;">Loading opportunities...</p>`;
+
+            try {
+                const response = await fetch(
+                    "https://jsearch.p.rapidapi.com/search?query=frontend%20developer&num_pages=1", {
+                        method: "GET",
+                        headers: {
+                            "X-RapidAPI-Key": '033640aeccmsh2f3c10af7b86518p1efbdejsn0b3b1da34437',
+                            "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
+                        },
+                    });
+
+                if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+
+                const data = await response.json();
+                const jobs = data.data;
+
+                if (!jobs || jobs.length === 0) {
+                    container.innerHTML = "<p style='text-align:center; color:#555;'>No jobs found.</p>";
+                    return;
+                }
+
+                container.innerHTML = "";
+
+                jobs.forEach(job => {
+                    const employerLogo = job.employer_logo;
+
+                    // Check if employer_logo exists. If not, do not create the card.
+                    if (employerLogo) {
+                        const card = document.createElement("div");
+                        card.classList.add("fetched-job-card");
+                        card.innerHTML = `
+                            <div class="fetched-card-header">
+                                <div class="fetched-card-logo-container">
+                                    <img src="${employerLogo}" alt="Company Logo" />
+                                </div>
+                                <div class="fetched-job-title-container">
+                                    <h3>${job.job_title}</h3>
+                                    <p><strong>${job.employer_name}</strong></p>
+                                    <p><i class="fa-solid fa-location-dot"></i> ${job.job_city || 'N/A'} • ${job.job_employment_type || 'Type'}</p>
+                                </div>
+                            </div>
+                            <div class="fetched-card-middle">
+                                <span class="fetched-salary">₹${job.job_min_salary || 'N/A'} - ${job.job_max_salary || 'N/A'}/MTH</span>
+                                <span class="fetched-badge fetched-internship-badge">INTERNSHIP</span>
+                                <span class="fetched-badge fetched-student-badge">STUDENT</span>
+                            </div>
+                            <p class="fetched-description">${job.job_description?.substring(0, 100) || ''}...</p>
+                            <div class="fetched-card-footer">
+                                <small>Posted: ${new Date(job.job_posted_at_datetime_utc).toLocaleDateString()}</small>
+                                <a href="${job.job_apply_link}" target="_blank" class="fetched-apply-btn">Apply Now</a>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    }
+                });
+
+                // If no cards were appended because of missing logos, display a message.
+                if (container.children.length === 0) {
+                    container.innerHTML = "<p style='text-align:center; color:#555;'>No opportunities available with an image.</p>";
+                }
+
+            } catch (error) {
+                container.innerHTML = `<p style="color:red; text-align:center; padding:20px;">Error loading jobs: ${error.message}</p>`;
+                console.error("Error fetching jobs:", error);
+            }
+        }
+
+        fetchAndDisplayJobs();
+    </script>
+</body>
+
+</html>

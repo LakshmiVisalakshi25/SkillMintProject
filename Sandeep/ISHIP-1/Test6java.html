@@ -1,0 +1,294 @@
+<!-- Full Java Bubble Quiz Code -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Quiz</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to right, #1e3c72, #a8edea);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+    .question-container {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 25px;
+      background-color: #0b2447;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+    }
+    .bubble {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ddd;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center;
+      cursor: pointer;
+      position: absolute;
+      top: 100vh;
+      color: #333;
+      font-size: 1.1rem; font-weight: bold;
+      padding: 15px;
+      transition: transform 0.5s, background-color 0.5s, border 0.5s, box-shadow 0.3s;
+      animation: moveUp var(--animation-duration) linear infinite;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .bubble:hover {
+      background-color: #f3f3f3;
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes moveUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-130vh); opacity: 0; }
+    }
+    @keyframes burstCorrect {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.6; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    .bubble.correct {
+      animation: burstCorrect 0.8s forwards;
+      background-color: #00c853;
+      border-color: #00c853;
+      color: white;
+    }
+    .bubble.incorrect {
+      border: 4px solid #ff1744;
+      background-color: #ffebee;
+    }
+    #quiz {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .score-display {
+      text-align: center;
+      margin-top: 180px;
+      font-size: 2.2rem;
+      color: #fff;
+    }
+    .score-display button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #ff4081;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .score-display button:hover {
+      background: #f50057;
+    }
+    @media screen and (max-width: 600px) {
+      .question-container { font-size: 1.5rem; padding: 10px 15px; }
+      .bubble { width: 120px; height: 120px; font-size: 0.9rem; }
+      .score-display { font-size: 1.6rem; margin-top: 150px; }
+      .score-display button { padding: 10px 25px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container">
+    <h2 id="question">Question Text</h2>
+  </div>
+
+  <div class="quiz-container" id="quiz"></div>
+
+  <script>
+    const quizContainer = document.getElementById('quiz');
+    const questionEl = document.getElementById('question');
+
+    const quizData = [
+      {
+        question: "1. Which keyword is used to create a class in Java?",
+        options: {
+          a: "define",
+          b: "new",
+          c: "class",
+          d: "struct"
+        },
+        correct: "c"
+      },
+      {
+        question: "2. Which of these is not a Java primitive type?",
+        options: {
+          a: "int",
+          b: "float",
+          c: "boolean",
+          d: "String"
+        },
+        correct: "d"
+      },
+      {
+        question: "3. Which method is the entry point for a Java program?",
+        options: {
+          a: "start()",
+          b: "init()",
+          c: "main()",
+          d: "run()"
+        },
+        correct: "c"
+      },
+      {
+        question: "4. What does JVM stand for?",
+        options: {
+          a: "Java Visual Machine",
+          b: "Java Virtual Machine",
+          c: "Java Verified Module",
+          d: "Java View Manager"
+        },
+        correct: "b"
+      },
+      {
+        question: "5. Which keyword prevents inheritance?",
+        options: {
+          a: "static",
+          b: "private",
+          c: "final",
+          d: "protected"
+        },
+        correct: "c"
+      },
+      {
+        question: "6. How is an object created in Java?",
+        options: {
+          a: "new MyClass();",
+          b: "create MyClass();",
+          c: "MyClass obj();",
+          d: "new class MyClass();"
+        },
+        correct: "a"
+      },
+      {
+        question: "7. What does 'this' keyword refer to?",
+        options: {
+          a: "Current method",
+          b: "Superclass",
+          c: "Current class object",
+          d: "Parent object"
+        },
+        correct: "c"
+      },
+      {
+        question: "8. Which interface is used for sorting in Java?",
+        options: {
+          a: "Serializable",
+          b: "Comparator",
+          c: "Iterable",
+          d: "Cloneable"
+        },
+        correct: "b"
+      },
+      {
+        question: "9. Which package contains ArrayList?",
+        options: {
+          a: "java.io",
+          b: "java.util",
+          c: "java.lang",
+          d: "java.awt"
+        },
+        correct: "b"
+      },
+      {
+        question: "10. What is method overloading?",
+        options: {
+          a: "Same method name with different parameters",
+          b: "Same class used multiple times",
+          c: "Using abstract classes",
+          d: "Two methods with same name and same parameters"
+        },
+        correct: "a"
+      }
+    ];
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    function loadQuiz() {
+      const currentQuizData = quizData[currentQuiz];
+      questionEl.innerText = currentQuizData.question;
+      createBubbles(currentQuizData.options);
+    }
+
+    function createBubbles(options) {
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => bubble.remove());
+
+      Object.keys(options).forEach(key => {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.id = key;
+        bubble.innerText = options[key];
+
+        const startLeft = Math.random() * (window.innerWidth - 160);
+        const duration = 10 + Math.random() * 5;
+        const delay = Math.random() * duration;
+
+        bubble.style.left = `${startLeft}px`;
+        bubble.style.setProperty('--animation-duration', `${duration}s`);
+        bubble.style.animationDelay = `${delay}s`;
+
+        bubble.addEventListener('click', () => {
+          handleAnswer(bubble, key);
+        });
+
+        quizContainer.appendChild(bubble);
+      });
+    }
+
+    function handleAnswer(clickedBubble, answerKey) {
+      quizContainer.querySelectorAll('.bubble').forEach(bubble => {
+        bubble.style.animationPlayState = 'paused';
+      });
+
+      if (answerKey === quizData[currentQuiz].correct) {
+        score++;
+        clickedBubble.classList.add('correct');
+      } else {
+        clickedBubble.classList.add('incorrect');
+        const correctBubble = document.getElementById(quizData[currentQuiz].correct);
+        if (correctBubble) {
+          correctBubble.style.border = '5px solid #00c853';
+        }
+      }
+
+      setTimeout(() => {
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+          loadQuiz();
+        } else {
+          showScore();
+        }
+      }, 1000);
+    }
+
+    function showScore() {
+      quizContainer.innerHTML = `
+        <div class="score-display">
+          <h2>🎉 You scored ${score} out of ${quizData.length}!</h2>
+          <button onclick="location.reload()">Play Again</button>
+        </div>
+      `;
+    }
+
+    loadQuiz();
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instructor Signup Form</title>
+    <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <link rel="stylesheet" href="insturctor.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/brands.min.css" integrity="sha512-mXqwRsOznG7CS37KA7CLR1Fc72gfOgp7r8xaVdBKoBKhitcKI/mK+IamtZUf+FAkufXOvVTESu9lPsoQc+kFxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Instructor Signup Form</h2>
+    <div class="main">
+      <div class="main2">
+        <div class="heading">
+          <h1>SkillMint</h1>
+          <h2>Join Our Educational Network</h2>
+          <p>Create your account to Share your expertise and inspire the next generation</p>
+        </div>
+
+        <!-- Role Selection Tabs -->
+        <div class="role-tabs">
+          <div class="tab-indicator" id="tabIndicator"></div>
+          <button class="tab-button active" data-role="student">
+            <a href="signupp.html">🎓 I'm a Student</a>
+          </button>
+          <button class="tab-button active" data-role="instructor">
+            <a href="instructorsignup.html">👨‍🏫 I'm an Instructor</a>
+          </button>
+          <button class="tab-button active" data-role="recruiter">
+            <a href="recruitersignupform.html">💼 I'm a Recruiter</a>
+          </button>
+          <button class="tab-button active" data-role="alumni">
+            <a href="Alumni.html">👨‍🎓 I'm an Alumni</a>
+          </button>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="instructorSignupForm" action="#" method="POST">
+          <div class="form-group">
+            <div class="form-field">
+              <label>First Name *</label>
+              <input type="text" name="firstName" required>
+            </div>
+            <div class="form-field">
+              <label>Last Name *</label>
+              <input type="text" name="lastName" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field">
+              <label>Email Address *</label>
+              <input type="email" name="email" required>
+            </div>
+            <div class="form-field">
+              <label>Phone Number</label>
+              <input type="text" name="phone">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field">
+              <label>Password *</label>
+              <input type="password" name="password" required>
+            </div>
+            <div class="form-field">
+              <label>Confirm Password *</label>
+              <input type="password" name="confirmPassword" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field">
+              <label>Designation</label>
+              <input type="text" name="designation">
+            </div>
+            <div class="form-field">
+              <label>Department</label>
+              <input type="text" name="department">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field">
+              <label>Education Level</label>
+              <select name="education">
+                <option value="">Select your level</option>
+                <option>Bachelor's</option>
+                <option>Master's</option>
+                <option>PhD</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Areas of Interest</label>
+              <select name="interests">
+                <option>Technology</option>
+                <option>Science</option>
+                <option>Humanities</option>
+                <option>Business</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-field">
+              <label>Subjects or Courses Taught</label>
+              <textarea name="courses" rows="3"></textarea>
+            </div>
+            <div class="form-field">
+              <label>Years of Experience</label>
+              <input type="number" name="experience" min="0">
+            </div>
+          </div>
+           <!-- RESUME -->
+          <div class="form-group">
+            <div class="form-field">
+              <label>Upload CV / Profile Picture</label>
+              <input type="file" name="upload">
+            </div>
+          </div>
+
+          <div class="form-group button-column" style="grid-column: 1 / -1;">
+            <button type="button" class="btn-back" onclick="window.location.href='Main.html'">Back to Home</button>
+            <button type="submit" class="btn-primary"><a href="../Sandeep/ISHIP-1/courseallocation.html" style="text-decoration: none;color: white;font-weight: bold;">Create Instructor Account</a></button>
+          </div>
+
+          <!-- Social Login -->
+          <div class="social-login" style="grid-column: 1 / -1;">
+            <p>or continue with</p>
+            <div class="social-buttons">
+              <button type="button" class="social-btn"><span class="google"><i class="fa-brands fa-google"></i></span> Google</button>
+              <button type="button" class="social-btn"><span class="facebook"><i class="fa-brands fa-facebook"></i></span> Facebook</button>
+              <button type="button" class="social-btn"><span class="linkedin"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role-Based Redirect Script -->
+  <script>
+    document.getElementById("instructorSignupForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent default form submission
+
+      // Simulated user object for redirect
+      const user = {
+        role: "instructor"
+      };
+
+      switch (user.role) {
+        case "student":
+          window.location.href = "student-dashboard.html";
+          break;
+        case "instructor":
+          window.location.href = "instructor-dashboard.html";
+          break;
+        case "recruiter":
+          window.location.href = "recruiter-dashboard.html";
+          break;
+        case "alumni":
+          window.location.href = "alumni-dashboard.html";
+          break;
+        default:
+          alert("Unknown role!");
+      }
+    });
+  </script>
+</body>
+</html>

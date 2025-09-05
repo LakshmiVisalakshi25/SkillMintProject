@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruiter Sign-Up</title>
+    <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <link rel="stylesheet" href="recruiters(external).css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/brands.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+  <div class="form-container">
+    <div class="heading">
+      <h1>SkillMint</h1>
+      <h2>Join Our Network</h2>
+      <p>Create your account to connect with top talent and grow your recruiting business</p>
+    </div>
+
+    <!-- Role Selection Tabs -->
+    <div class="role-tabs">
+      <div class="tab-indicator" id="tabIndicator"></div>
+      <button class="tab-button active"><a href="signupp.html">🎓 I'm a Student</a></button>
+      <button class="tab-button active"><a href="instructorsignup.html">👨‍🏫 I'm an Instructor</a></button>
+      <button class="tab-button active"><a href="recruitersignupform.html">💼 I'm a Recruiter</a></button>
+      <button class="tab-button active"><a href="Alumni.html">👨‍🎓 I'm an Alumni</a></button>
+    </div>
+
+    <form id="recruiterForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Password *</label>
+          <input type="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password *</label>
+          <input type="password" name="confirmPassword" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="linkedin">LinkedIn Profile</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/..." />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company/Agency Name <span class="required">*</span></label>
+        <input type="text" id="company" name="company" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="position">Your Position/Title <span class="required">*</span></label>
+          <input type="text" id="position" name="position" required />
+        </div>
+        <div class="form-group">
+          <label for="experience">Years of Experience <span class="required">*</span></label>
+          <select id="experience" name="experience" required>
+            <option value="">Select experience level</option>
+            <option value="0-1">0-1 years</option>
+            <option value="2-5">2-5 years</option>
+            <option value="6-10">6-10 years</option>
+            <option value="11-15">11-15 years</option>
+            <option value="15+">15+ years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="specializations">Specialization Areas <span class="required">*</span></label>
+        <select id="specializations" name="specializations" required>
+          <option value="">Select your primary specialization</option>
+          <option value="technology">Technology & IT</option>
+          <option value="healthcare">Healthcare & Medical</option>
+          <option value="finance">Finance & Banking</option>
+          <option value="marketing">Marketing & Sales</option>
+          <option value="engineering">Engineering</option>
+          <option value="executive">Executive Search</option>
+          <option value="hr">Human Resources</option>
+          <option value="manufacturing">Manufacturing</option>
+          <option value="education">Education</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="location">Primary Location <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="City, State/Country" required />
+        </div>
+        <div class="form-group">
+          <label for="companySize">Company Size</label>
+          <select id="companySize" name="companySize">
+            <option value="">Select company size</option>
+            <option value="1-10">1-10 employees</option>
+            <option value="11-50">11-50 employees</option>
+            <option value="51-200">51-200 employees</option>
+            <option value="201-1000">201-1000 employees</option>
+            <option value="1000+">1000+ employees</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Tell us about your recruiting focus and what makes you unique</label>
+        <textarea id="description" name="description" placeholder="Describe your recruiting specialties, target industries, and what sets you apart..."></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" name="terms" required />
+        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a> <span class="required">*</span></label>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="newsletter" name="newsletter" />
+        <label for="newsletter">I'd like to receive updates about new opportunities and platform features</label>
+      </div>
+
+      <div class="form-group button-column" style="grid-column: 1 / -1;">
+            <button type="button" class="btn-back" onclick="window.location.href='Main.html'">Back to Home</button>
+            <button type="submit" class="btn-primary"><a href="../Harini/Recruiter.html" style="text-decoration: none;color: white;font-weight: bold;">Create Recruiter Account</a></button>
+          </div>
+    </form>
+
+    <!-- Social Login -->
+    <div class="social-login" style="grid-column: 1 / -1;">
+      <p>or continue with</p>
+      <div class="social-buttons">
+        <button type="button" class="social-btn"><span class="google"><i class="fa-brands fa-google"></i></span> Google</button>
+        <button type="button" class="social-btn"><span class="facebook"><i class="fa-brands fa-facebook"></i></span> Facebook</button>
+        <button type="button" class="social-btn"><span class="linkedin"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🚀 Redirect Script -->
+  <script>
+    document.getElementById("recruiterForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent actual form submission
+
+      const user = {
+        role: "recruiter" // Static for this form
+      };
+
+      switch (user.role) {
+        case "student":
+          window.location.href = "student-dashboard.html";
+          break;
+        case "instructor":
+          window.location.href = "instructor-dashboard.html";
+          break;
+        case "recruiter":
+          window.location.href = "recruiter-dashboard.html";
+          break;
+        case "alumni":
+          window.location.href = "alumni-dashboard.html";
+          break;
+        default:
+          alert("Unknown role!");
+      }
+    });
+  </script>
+</body>
+</html>

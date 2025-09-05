@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <title>SKILLMINT</title>
+  <link rel="stylesheet" href="stylesheet1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="left">
+      <img src="../logo1.jpg" alt="Logo">
+      <h1>SKILLMINT</h1>
+    </div>
+    <div class="hamburger" onclick="openMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="sections" id="menu">
+      <span class="close" onclick="closeMenu()">&times;</span>
+      <a href="main.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+      <div class="dropdown">
+              <i class="fa-solid fa-circle-user" id="circle"></i>
+              <div class="dropdown-content">
+                      <div>Sign IN</div>
+                      <div>Register</div>
+              </div>
+      </div>
+    </div>
+  </nav>
+  <div class="contact11">
+    <div class="a">
+      <h1>Contact Us</h1>
+      <p>We’d love to hear from you — let’s start a conversation.</p>
+      <div class="b">
+        <div class="b1">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="b11">
+            <h3>Address</h3>
+            <p>Surampalem, India</p>
+          </div>
+        </div>
+      </div>
+      <div class="b">
+        <div class="b1">
+          <i class="fa-solid fa-phone-volume"></i>
+          <div class="b11">
+            <h3>Phone</h3>
+            <p>+91 1234678912</p>
+          </div>
+        </div>
+      </div>
+      <div class="b">
+        <div class="b1">
+          <i class="fa-solid fa-envelope"></i>
+          <div class="b11">
+            <h3>Email</h3>
+            <p>xxx@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b31">
+      <h1>Reach US</h1>
+      <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61015.538155098475!2d82.0740096!3d17.09850285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a378165aaaaaaab%3A0x481e8b12b4b80715!2sAditya%20Engineering%20College!5e0!3m2!1sen!2sin!4v1753621325730!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  <div class="b3">
+        <h1>Drop Us A Message</h1>
+        <p>Required Fields are Marked *</p>
+        <form>
+          <input type="text" placeholder="Full Name*" required>
+          <input type="email" placeholder="Email Address*" required>
+          <input type="number" placeholder="Phone Number*" required>
+          <textarea placeholder="Message*"></textarea>
+          
+          <div class="btns">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+  </div>
+
+  </div>
+  </div>
+  <div class="footer1">
+        <center>
+            <p>&copy;SkillMint All rights reserved</p>
+            <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-brands fa-linkedin"></i>
+        </center>
+    </div>
+  <script>
+    function openMenu() {
+      document.getElementById("menu").style.left = "0";
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.left = "-250px";
+    }
+  </script>
+</body>
+</html>
