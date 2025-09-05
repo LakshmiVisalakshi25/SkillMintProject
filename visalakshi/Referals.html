@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Referrals</title>
-    <link rel="icon" type="image/x-icon" href="logo_final.png">
+  <link rel="icon" type="image/x-icon" href="logo_final.png">
   <link rel="stylesheet" href="stylesheet2.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="./courseallocation.css" />
@@ -35,43 +35,54 @@
     .a1, .sec-1, .search, .courses-container, .footer {
       background-color: transparent;
     }
-   
-.sections > a[href="Main.html"] {
-  display: none;
-}
-.user-menu {
-  position: relative;  
-  cursor: pointer;
-  display: inline-block; 
-}
 
-.user-dropdown {
-  position: absolute;
-  right: -30px;
-  top: 100%;
-  background: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  padding: 10px;
-  display: none;
-  flex-direction: column;
-  min-width: 140px;
-  z-index: 10;
-}
+    .sections > a[href="Main.html"] {
+      display: none;
+    }
 
-.user-menu:hover .user-dropdown {
-  display: flex;
-}
+    .user-menu {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+    }
 
-@media (max-width: 1024px) {
-  .sections > a[href="Main.html"] {
-    display: block;
-  }
-  .user-menu.desktop-only {
-    display: none;
-  }
-}
+    .user-dropdown {
+      position: absolute;
+      right: -30px;
+      top: 100%;
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      min-width: 140px;
+      z-index: 10;
+    }
+
+    .user-menu:hover .user-dropdown {
+      display: flex;
+    }
+
+    /* Mobile/desktop visibility */
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .sections > a[href="Main.html"] {
+        display: block;
+      }
+
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: block !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -91,21 +102,21 @@
     <div class="hamburger" onclick="openMenu()">
       <i class="fa-solid fa-bars"></i>
     </div>
+
     <div class="sections" id="menu">
-  <span class="close" onclick="closeMenu()">&times;</span>
-  <a href="Referals.html">Referrals</a>
-  <a href="Cards1.html">Share Journey</a>
-  <a href="../index.html">Logout</a> 
-  <div class="user-menu desktop-only">
+      <span class="close" onclick="closeMenu()">&times;</span>
+      <a href="Referals.html">Referrals</a>
+      <a href="Cards1.html">Share Journey</a>
+      <a href="../index.html" class="mobile-only">Logout</a> <!-- Mobile-only Logout -->
+
+      <!-- Desktop-only user icon with dropdown -->
+      <div class="user-menu desktop-only">
         <div class="user-icon"><i class="fa-solid fa-circle-user"></i></div>
         <div class="user-dropdown">
           <a href="../index.html">Logout</a>
         </div>
       </div>
-</div>
-
-</div>
-
+    </div>
   </nav>
 
   <div class="a1">
